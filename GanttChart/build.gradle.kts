@@ -21,6 +21,14 @@ publishing {
             url = uri("${project.buildDir}/repo")
         }
     }
+    tasks.register<Zip>("generateRepo") {
+        val publishTask = tasks.named(
+            "publishReleasePublicationToMyrepoRepository",
+            PublishToMavenRepository::class.java)
+        from(publishTask.map { it.repository.url })
+        into("mylibrary")
+        archiveFileName.set("mylibrary.zip")
+    }
 }
 /*afterEvaluate {
     publishing {
