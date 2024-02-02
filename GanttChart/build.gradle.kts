@@ -68,6 +68,14 @@ publishing {
             version = " 1.0.8.6"
             afterEvaluate {
                 from(components["release"])
+                tasks.register<Zip>("generateRepo") {
+                    val publishTask = tasks.named(
+                        "publishReleasePublicationToMyrepoRepository",
+                        PublishToMavenRepository::class.java)
+                    from(publishTask.map { it.repository.url })
+                    into("mylibrary")
+                    archiveFileName.set("mylibrary.zip")
+                }
             }
         }
     }
@@ -76,14 +84,7 @@ publishing {
             name = "gantt-chart"
             url = uri("${project.buildDir}/repo")
         }
-        tasks.register<Zip>("generateRepo") {
-            val publishTask = tasks.named(
-                "publishReleasePublicationToMyrepoRepository",
-                PublishToMavenRepository::class.java)
-            from(publishTask.map { it.repository.url })
-            into("mylibrary")
-            archiveFileName.set("mylibrary.zip")
-        }
+
     }
 
 }
