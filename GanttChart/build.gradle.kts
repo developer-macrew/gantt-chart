@@ -1,7 +1,24 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "com.chart.ganttchart"
+                artifactId = "library"
+                version = "1.0.3"
+
+                from(components["release"])
+            }
+// Creates a Maven publication called "release".
+
+        }
+    }
+}
+
 
 android {
     namespace = "com.chart.ganttchart"
