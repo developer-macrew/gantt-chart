@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
+
+
+    <color name="black2">#D3D2D2</color>
+    <color name="grey">#E9F7F7F7</color>
+    <color name="grey2">#e8e8e8</color>
+    <color name="task">#4a98c6</color>
+    <color name="task_progress">#235f84</color>
+</resources>

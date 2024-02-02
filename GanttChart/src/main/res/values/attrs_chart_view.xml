@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="ChartView">
+
+        <attr name="exampleDimension" format="dimension" />
+        <attr name="columnHorizontalPadding" format="dimension" />
+        <attr name="rowVerticalPadding" format="dimension" />
+    </declare-styleable>
+</resources>
