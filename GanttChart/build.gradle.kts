@@ -3,20 +3,33 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
 }
-afterEvaluate {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.chart.ganttchart"
+            artifactId = "gantt-chart"
+            version = "1.0.5"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
+/*afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("maven") {
                 groupId = "com.github.jitpack"
                 artifactId = "gantt-chart"
-                version = "1.0.4"
+                version = "1.0.5"
                 from(components["release"])
             }
 // Creates a Maven publication called "release".
 
         }
     }
-}
+}*/
 
 
 android {
@@ -56,6 +69,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    /*implementation ("com.github.jitpack:gantt-chart:1.0.4")*/
 
 }
