@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("maven-publish")
 }
-
+group = "com.github.developer-macrew"
 /*afterEvaluate {
     publishing {
         publications {
