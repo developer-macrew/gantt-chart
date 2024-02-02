@@ -15,6 +15,12 @@ publishing {
             }
         }
     }
+    repositories {
+        maven {
+            name = "gantt-chart"
+            url = uri("${project.buildDir}/repo")
+        }
+    }
 }
 /*afterEvaluate {
     publishing {
