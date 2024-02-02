@@ -1,35 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    /*`maven-publish`*/
     id ("maven-publish")
 }
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.chart.ganttchart"
-            artifactId = "gantt-chart"
-            version = " 1.0.8.6"
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "gantt-chart"
-            url = uri("${project.buildDir}/repo")
-        }
-    }
-    tasks.register<Zip>("generateRepo") {
-        val publishTask = tasks.named(
-            "publishReleasePublicationToMyrepoRepository",
-            PublishToMavenRepository::class.java)
-        from(publishTask.map { it.repository.url })
-        into("mylibrary")
-        archiveFileName.set("mylibrary.zip")
-    }
-}
+
 /*afterEvaluate {
     publishing {
         publications {
@@ -84,5 +58,32 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     /*implementation ("com.github.jitpack:gantt-chart:1.0.4")*/
+
+}
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.chart.ganttchart"
+            artifactId = "gantt-chart"
+            version = " 1.0.8.6"
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "gantt-chart"
+            url = uri("${project.buildDir}/repo")
+        }
+        tasks.register<Zip>("generateRepo") {
+            val publishTask = tasks.named(
+                "publishReleasePublicationToMyrepoRepository",
+                PublishToMavenRepository::class.java)
+            from(publishTask.map { it.repository.url })
+            into("mylibrary")
+            archiveFileName.set("mylibrary.zip")
+        }
+    }
 
 }
