@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     `maven-publish`
+    id ("maven-publish")
 }
 publishing {
     publications {
@@ -9,7 +10,6 @@ publishing {
             groupId = "com.chart.ganttchart"
             artifactId = "gantt-chart"
             version = " 1.0.8.4"
-
             afterEvaluate {
                 from(components["release"])
             }
