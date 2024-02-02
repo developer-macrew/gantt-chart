@@ -62,13 +62,22 @@ dependencies {
 }
 publishing {
     publications {
-        register<MavenPublication>("release") {
-            groupId = "com.chart.ganttchart"
+        /*publications {
+            create<MavenPublication>("myPublication") {
+                from(components["release"])
+                groupId = "com.chart.ganttchart"
+                artifactId = "gantt-chart"
+                version = "1.0.0"
+            }
+        }*/
+        register<MavenPublication>("myPublication") {
+            groupId = "com.github.developer-macrew"
             artifactId = "gantt-chart"
             version = " 1.0.8.6"
             afterEvaluate {
+
                 from(components["release"])
-                /*tasks.register<Zip>("generateRepo") {
+               /* tasks.register<Zip>("generateRepo") {
                     val publishTask = tasks.named(
                         "publishReleasePublicationToMyrepoRepository",
                         PublishToMavenRepository::class.java)
@@ -86,5 +95,10 @@ publishing {
         }
 
     }
+    tasks {
 
+        "publishToMavenLocal" {
+            dependsOn("publishMyPublicationToMavenLocal")
+        }
+    }
 }
