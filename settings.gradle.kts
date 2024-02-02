@@ -19,4 +19,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "GanttChartLibrary"
+include(":app")
 include(":GanttChart")
