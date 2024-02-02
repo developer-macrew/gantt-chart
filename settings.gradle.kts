@@ -15,6 +15,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+
 }
 
 rootProject.name = "GanttChartLibrary"
