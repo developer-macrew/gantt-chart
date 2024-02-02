@@ -9,7 +9,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.chart.ganttchart"
             artifactId = "gantt-chart"
-            version = " 1.0.8.5"
+            version = " 1.0.8.6"
             afterEvaluate {
                 from(components["release"])
             }
