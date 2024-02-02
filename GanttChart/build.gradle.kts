@@ -70,7 +70,7 @@ publishing {
                 version = "1.0.0"
             }
         }*/
-        register<MavenPublication>("myPublication") {
+        register<MavenPublication>("release") {
             groupId = "com.github.developer-macrew"
             artifactId = "gantt-chart"
             version = " 1.0.8.6"
@@ -95,10 +95,10 @@ publishing {
         }
 
     }
-    tasks {
+  /*  tasks {
 
         "publishToMavenLocal" {
             dependsOn("publishMyPublicationToMavenLocal")
         }
-    }
+    }*/
 }
