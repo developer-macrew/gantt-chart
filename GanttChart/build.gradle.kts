@@ -4,21 +4,6 @@ plugins {
     id ("maven-publish")
 }
 group = "com.github.developer-macrew"
-/*afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = "com.github.jitpack"
-                artifactId = "gantt-chart"
-                version = "1.0.5"
-                from(components["release"])
-            }
-// Creates a Maven publication called "release".
-
-        }
-    }
-}*/
-
 
 android {
     namespace = "com.chart.ganttchart"
@@ -62,15 +47,6 @@ dependencies {
 }
 publishing {
     publications {
-
-        /*publications {
-            create<MavenPublication>("myPublication") {
-                from(components["release"])
-                groupId = "com.chart.ganttchart"
-                artifactId = "gantt-chart"
-                version = "1.0.0"
-            }
-        }*/
         register<MavenPublication>("mavenLocal") {
             groupId = "com.github.developer-macrew"
             artifactId = "gantt-chart"
@@ -79,31 +55,11 @@ publishing {
                 description = "Gantt Chart"
             }
             afterEvaluate {
-
                 from(components["release"])
-               /* tasks.register<Zip>("generateRepo") {
-                    val publishTask = tasks.named(
-                        "publishReleasePublicationToMyrepoRepository",
-                        PublishToMavenRepository::class.java)
-                    from(publishTask.map { it.repository.url })
-                    into("mylibrary")
-                    archiveFileName.set("mylibrary.zip")
-                }*/
             }
         }
     }
     repositories {
         mavenLocal()
-        /*maven {
-            name = "gantt-chart"
-            url = uri("${project.buildDir}/repo")
-        }*/
-
     }
-  /*  tasks {
-
-        "publishToMavenLocal" {
-            dependsOn("publishMyPublicationToMavenLocal")
-        }
-    }*/
 }
